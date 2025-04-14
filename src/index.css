@@ -1,0 +1,30 @@
+/* ✅ Import Google Font: Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✨ Suaviza el scroll en toda la web */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🎨 Animación de gradiente de fondo */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+/* 💡 Reglas base */
+@layer base {
+  body {
+    @apply font-sans antialiased bg-white text-gray-900;
+  }
+}
