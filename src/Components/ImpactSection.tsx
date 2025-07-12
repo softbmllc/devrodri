@@ -28,8 +28,25 @@ export default function ImpactSection() {
         viewport={{ once: true }}
       >
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+          {/* Imagen con gradiente en todos los bordes */}
+          <div className="relative rounded-xl overflow-hidden shadow-xl">
+            <img
+              src="/img/impact.jpg"
+              alt="Diseño visual impactante"
+              className="object-cover w-full h-full"
+            />
+            {/* Degradado arriba */}
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black via-black/50 to-transparent pointer-events-none" />
+            {/* Degradado abajo */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
+            {/* Degradado izquierda */}
+            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black via-black/50 to-transparent pointer-events-none" />
+            {/* Degradado derecha */}
+            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black via-black/50 to-transparent pointer-events-none" />
+          </div>
+
           {/* Texto */}
-          <div>
+          <div className="md:pl-10">
             <h2 className="text-4xl sm:text-5xl font-semibold leading-tight mb-6">
               {t.transitionVisual.title}
               <br />
@@ -40,16 +57,6 @@ export default function ImpactSection() {
             <p className="text-gray-400 text-lg">
               {t.transitionVisual.paragraph}
             </p>
-          </div>
-
-          {/* Imagen con gradiente */}
-          <div className="relative rounded-xl overflow-hidden shadow-xl">
-            <img
-              src="/img/impact.jpg"
-              alt="Diseño visual impactante"
-              className="object-cover w-full h-full"
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-transparent" />
           </div>
         </div>
       </motion.section>

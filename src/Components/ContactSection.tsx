@@ -1,4 +1,3 @@
-// src/Components/ContactSection.tsx
 import { useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
@@ -28,23 +27,24 @@ export default function ContactSection() {
 
   return (
     <section
-      id="formulario-contacto"
-      className="relative py-28 px-4 sm:px-6 bg-gray-100 overflow-hidden"
+      id="contacto"
+      className="relative py-28 px-4 sm:px-6 bg-black overflow-hidden"
     >
       {/* Degradado sutil arriba para transición desde Portfolio */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#f9fafb] to-transparent z-20" />
 
-      {/* Imagen de fondo tipo tech-blur */}
-      <div
-        className="absolute inset-0 bg-cover bg-center z-0 opacity-20"
-        style={{ backgroundImage: "url('/img/contact-bg.jpg')" }}
-      />
-
-      {/* Overlay sutil */}
-      <div className="absolute inset-0 bg-black/10 z-0" />
-
-      {/* Degradado sutil abajo para transición hacia FAQ */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#f9fafb] to-transparent z-20" />
+      {/* Imagen de fondo con degradado tipo Hero */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+  <img
+    src="/img/contact-bg.jpg"
+    alt="Contacto"
+    className="absolute inset-0 w-full h-full object-cover opacity-100"
+  />
+  {/* Gradiente lateral como antes */}
+  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent z-10" />
+  {/* NUEVO: Gradiente inferior para fundirse con negro */}
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black z-20" />
+</div>
 
       <motion.div
         className="relative z-30 bg-white border border-white/70 max-w-xl mx-auto rounded-3xl shadow-xl p-10 sm:p-12 text-center"

@@ -1,3 +1,5 @@
+// src/translations.ts
+
 export type LanguageKeys = "es" | "en";
 
 export type TranslationsStructure = {
@@ -64,6 +66,11 @@ export type TranslationsStructure = {
   portfolio: {
     title: string;
     boating: {
+      title: string;
+      desc: string;
+      link: string;
+    };
+    bionova: {
       title: string;
       desc: string;
       link: string;
@@ -240,6 +247,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       boating: {
         title: "Boating Adventures Miami",
         desc: "Sitio web responsivo en 3 idiomas, con SEO, WhatsApp directo y diseño personalizado.",
+        link: "Ver sitio web",
+      },
+      bionova: {
+        title: "Bionova Supplements",
+        desc: "Tienda online profesional en EE.UU. para venta de suplementos. Sitio multilenguaje, integrado con Stripe, PayPal, Firebase y panel de administración completo.",
         link: "Ver sitio web",
       },
       seo: {
@@ -462,6 +474,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       boating: {
         title: "Boating Adventures Miami",
         desc: "Responsive site in 3 languages, with SEO, WhatsApp integration and custom design.",
+        link: "View website",
+      },
+      bionova: {
+        title: "Bionova Supplements",
+        desc: "Professional online store in the U.S. for supplement sales. Multilanguage site with Stripe, PayPal, Firebase integration and a complete admin panel.",
         link: "View website",
       },
       seo: {

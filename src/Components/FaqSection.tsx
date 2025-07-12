@@ -1,3 +1,4 @@
+// src/Components/FaqSection.tsx
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
 import { motion } from "framer-motion";
@@ -9,31 +10,32 @@ export default function FaqSection() {
   return (
     <motion.section
       id="faq"
-      className="relative bg-neutral py-28 px-4 sm:px-6 overflow-hidden"
+      className="relative bg-black py-28 px-4 sm:px-6 overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.7 }}
       viewport={{ once: true }}
     >
-      {/* Imagen de fondo tech difusa */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-20 z-0"
-        style={{ backgroundImage: "url('/img/faq-bg.jpg')" }}
-      />
+      {/* Imagen de fondo centrada y ampliada con degradado sutil */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <img
+          src="/img/faq-bg.jpg"
+          alt="FAQ"
+          className="absolute inset-0 w-full h-full object-cover scale-125" // aumentamos el tamaño
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+      </div>
 
-      {/* Capa de color blanco sutil */}
-      <div className="absolute inset-0 bg-white/30 z-0" />
+      {/* Degradado superior (desde negro a imagen) */}
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black to-transparent z-10" />
 
-      {/* Degradado superior suave para transición con Contact */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-[#f9fafb] to-transparent z-10" />
-
-      {/* Degradado inferior suave para transición con CallToAction */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#f9fafb] to-transparent z-10" />
+      {/* Degradado inferior (imagen a negro) */}
+<div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black to-transparent z-10" />
 
       {/* Contenido principal */}
       <div className="relative z-20 max-w-4xl mx-auto">
         <motion.h2
-          className="text-4xl sm:text-5xl font-bold text-center text-primary mb-12 tracking-tight leading-tight drop-shadow-sm"
+  className="text-4xl sm:text-5xl font-bold text-center text-white mb-12 tracking-tight leading-tight drop-shadow-sm"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

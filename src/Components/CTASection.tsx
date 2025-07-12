@@ -21,7 +21,7 @@ export default function CTASection() {
       {/* Curva blanca arriba */}
       <div className="absolute inset-x-0 top-0 overflow-hidden leading-none rotate-180">
         <svg viewBox="0 0 1440 60" className="w-full h-[60px]" preserveAspectRatio="none">
-          <path
+          <path 
             fill="#f9fafb"
             d="M0,0 C480,40 960,0 1440,40 L1440,60 L0,60 Z"
           />

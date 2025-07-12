@@ -1,4 +1,3 @@
-// src/Components/Navbar.tsx
 import { useState, useEffect } from "react";
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
@@ -42,8 +41,8 @@ export default function Navbar() {
 
         {/* Links en desktop */}
         <div className="hidden sm:flex items-center space-x-6 text-sm font-medium text-white">
-          <a href="#about" className="hover:text-primary transition">{t.nav.about}</a>
-          <a href="#why" className="hover:text-primary transition">{t.nav.why}</a>
+          <a href="#sobremi" className="hover:text-primary transition">{t.nav.about}</a>
+          <a href="#porqueelegirnos" className="hover:text-primary transition">{t.nav.why}</a>
           <a href="#portfolio" className="hover:text-primary transition">{t.nav.portfolio}</a>
           <a href="#contacto" className="hover:text-primary transition">{t.nav.contact}</a>
           <a href="#faq" className="hover:text-primary transition">{t.nav.faq}</a>
@@ -70,8 +69,8 @@ export default function Navbar() {
       {/* Menú desplegable mobile */}
       {menuOpen && (
         <div className="sm:hidden px-4 pb-4 flex flex-col items-center space-y-4 text-sm font-medium bg-black/80 backdrop-blur-sm text-white">
-          <a href="#about" onClick={closeMenu} className="hover:text-primary transition">{t.nav.about}</a>
-          <a href="#why" onClick={closeMenu} className="hover:text-primary transition">{t.nav.why}</a>
+          <a href="#sobremi" onClick={closeMenu} className="hover:text-primary transition">{t.nav.about}</a>
+          <a href="#porqueelegirnos" onClick={closeMenu} className="hover:text-primary transition">{t.nav.why}</a>
           <a href="#portfolio" onClick={closeMenu} className="hover:text-primary transition">{t.nav.portfolio}</a>
           <a href="#contacto" onClick={closeMenu} className="hover:text-primary transition">{t.nav.contact}</a>
           <a href="#faq" onClick={closeMenu} className="hover:text-primary transition">{t.nav.faq}</a>

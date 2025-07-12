@@ -1,3 +1,5 @@
+// src/components/PortfolioSection.tsx
+
 import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
@@ -80,6 +82,38 @@ export default function PortfolioSection() {
                 whileTap={{ scale: 0.98 }}
               >
                 {t.portfolio.boating.link}
+              </motion.a>
+            </div>
+          </motion.div>
+          {/* Proyecto Bionova */}
+          <motion.div
+            className="bg-neutral shadow-md rounded-2xl overflow-hidden border border-gray-200"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <img
+              src="/img/bionova-cover.png"
+              alt="Bionova Supplements"
+              className="w-full h-48 object-cover rounded-t-2xl"
+            />
+            <div className="p-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                {t.portfolio.bionova.title}
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">
+                {t.portfolio.bionova.desc}
+              </p>
+              <motion.a
+                href="https://www.getbionova.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-primary font-medium hover:text-primary-dark transition-colors duration-200"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {t.portfolio.bionova.link}
               </motion.a>
             </div>
           </motion.div>

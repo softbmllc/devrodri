@@ -35,24 +35,51 @@ export default function HighlightsSection() {
   const t = translations[language];
   const videoRef = useRef<HTMLVideoElement>(null);
 
-useEffect(() => {
-  if (videoRef.current) {
-    videoRef.current.defaultMuted = true;
+  useEffect(() => {
+    const video = videoRef.current;
 
-    // Intento forzado de reproducir (Safari a veces lo permite con muted + programático)
-    const playPromise = videoRef.current.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        // Safari puede bloquearlo si aún no hay interacción, pero no rompe nada
-        console.warn("Autoplay blocked in Safari:", error);
-      });
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.load();
+      video.pause();
+      video.currentTime = 0;
+
+      const delayedPlay = setTimeout(() => {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              console.log("✅ Autoplay en Safari funcionó.");
+            })
+            .catch((error) => {
+              console.warn("🚫 Safari bloqueó autoplay:", error);
+            });
+        }
+      }, 300);
+
+      const tryPlay = () => {
+        if (video.paused) {
+          video.play().catch(() => {});
+        }
+      };
+
+      window.addEventListener("click", tryPlay);
+      window.addEventListener("scroll", tryPlay);
+
+      return () => {
+        clearTimeout(delayedPlay);
+        window.removeEventListener("click", tryPlay);
+        window.removeEventListener("scroll", tryPlay);
+      };
     }
-  }
-}, []);
+  }, []);
 
   return (
     <>
-      {/* Frase principal con flechita, ya sin duplicados */}
       <section className="bg-white text-center pt-6 pb-2">
         <p className="text-sm sm:text-base font-light text-gray-600 tracking-tight">
           {t.transitionIntro.text}
@@ -62,23 +89,20 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* Sección con fondo en video y los diferenciales */}
       <motion.section
-        id="diferenciales"
+        id="porqueelegirnos"
         className="relative bg-white py-28 px-4 sm:px-6 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
+        viewport={{ once: false, amount: 0.1 }}
       >
         <SeoHighlightsSection />
 
-        {/* Video de fondo */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <video
   ref={videoRef}
   autoPlay
-  muted
   loop
   playsInline
   preload="auto"
@@ -86,13 +110,14 @@ useEffect(() => {
   aria-hidden="true"
   poster=""
   className="absolute inset-0 w-full h-full object-cover opacity-100"
+  id="bgVideo"
+  muted // ✅ Solo una vez
 >
-  <source src="/videos/highlights-bg.mp4" type="video/mp4" />
-</video>
+            <source src="/videos/highlights-bg.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-0 pointer-events-none" />
         </div>
 
-        {/* Contenido sobre el video */}
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <motion.h2
             className="text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)] mb-20"
