@@ -75,6 +75,11 @@ export type TranslationsStructure = {
       desc: string;
       link: string;
     };
+    federico: {
+      title: string;
+      desc: string;
+      link: string;
+    };
     seo: {
       title: string;
       description: string;
@@ -252,6 +257,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       bionova: {
         title: "Bionova Supplements",
         desc: "Tienda online profesional en EE.UU. para venta de suplementos. Sitio multilenguaje, integrado con Stripe, PayPal, Firebase y panel de administración completo.",
+        link: "Ver sitio web",
+      },
+      federico: {
+        title: "Federico Roma",
+        desc: "Sitio web personal y profesional del campeón mundial de kickboxing y muay thai. Incluye biografía, cursos en video, fotos, y productos exclusivos.",
         link: "Ver sitio web",
       },
       seo: {
@@ -479,6 +489,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       bionova: {
         title: "Bionova Supplements",
         desc: "Professional online store in the U.S. for supplement sales. Multilanguage site with Stripe, PayPal, Firebase integration and a complete admin panel.",
+        link: "View website",
+      },
+      federico: {
+        title: "Federico Roma",
+        desc: "Personal and professional website for the Muay Thai and Kickboxing world champion. Includes biography, video courses, photos, and exclusive products.",
         link: "View website",
       },
       seo: {

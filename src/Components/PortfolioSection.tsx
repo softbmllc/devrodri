@@ -117,6 +117,38 @@ export default function PortfolioSection() {
               </motion.a>
             </div>
           </motion.div>
+          {/* Proyecto Federico Roma */}
+          <motion.div
+            className="bg-neutral shadow-md rounded-2xl overflow-hidden border border-gray-200"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <img
+              src="/img/federico-cover.jpg"
+              alt="Federico Roma"
+              className="w-full h-48 object-cover rounded-t-2xl"
+            />
+            <div className="p-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                {t.portfolio.federico.title}
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">
+                {t.portfolio.federico.desc}
+              </p>
+              <motion.a
+                href="https://www.federicoroma.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-primary font-medium hover:text-primary-dark transition-colors duration-200"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {t.portfolio.federico.link}
+              </motion.a>
+            </div>
+          </motion.div>
         </div>
       </div>
     </motion.section>
