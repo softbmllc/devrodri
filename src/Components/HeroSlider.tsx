@@ -27,7 +27,7 @@ const slides = [
       es: "Ver trabajos",
       en: "See portfolio",
     },
-    buttonLink: "#portfolio",
+    buttonLink: "/portfolio",
   },
   {
     id: 2,
