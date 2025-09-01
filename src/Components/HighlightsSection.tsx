@@ -1,6 +1,6 @@
 // src/Components/HighlightsSection.tsx
 import { motion } from "framer-motion";
-import { LuZap, LuSmartphone, LuTarget, LuRocket } from "react-icons/lu";
+import { LuZap, LuSmartphone, LuTarget, LuRocket, LuWorkflow, LuCreditCard } from "react-icons/lu";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
@@ -9,23 +9,33 @@ import { useRef, useEffect } from "react";
 
 const iconMap = {
   fast: (
-    <div className="bg-white rounded-full p-3 shadow-md">
-      <LuZap className="text-3xl text-blue-500" />
+    <div className="p-1.5 bg-white/75 rounded-full ring-1 ring-white/40 shadow-sm">
+      <LuZap className="text-[34px] text-blue-600" />
     </div>
   ),
   responsive: (
-    <div className="bg-white rounded-full p-3 shadow-md">
-      <LuSmartphone className="text-3xl text-blue-500" />
+    <div className="p-1.5 bg-white/75 rounded-full ring-1 ring-white/40 shadow-sm">
+      <LuSmartphone className="text-[34px] text-blue-600" />
     </div>
   ),
   results: (
-    <div className="bg-white rounded-full p-3 shadow-md">
-      <LuTarget className="text-3xl text-blue-500" />
+    <div className="p-1.5 bg-white/75 rounded-full ring-1 ring-white/40 shadow-sm">
+      <LuTarget className="text-[34px] text-blue-600" />
     </div>
   ),
   seo: (
-    <div className="bg-white rounded-full p-3 shadow-md">
-      <LuRocket className="text-3xl text-blue-500" />
+    <div className="p-1.5 bg-white/75 rounded-full ring-1 ring-white/40 shadow-sm">
+      <LuRocket className="text-[34px] text-blue-600" />
+    </div>
+  ),
+  automation: (
+    <div className="p-1.5 bg-white/80 rounded-full ring-1 ring-white/40 shadow-sm">
+      <LuWorkflow className="text-3xl text-blue-600" />
+    </div>
+  ),
+  payments: (
+    <div className="p-1.5 bg-white/80 rounded-full ring-1 ring-white/40 shadow-sm">
+      <LuCreditCard className="text-3xl text-blue-600" />
     </div>
   ),
 };
@@ -37,45 +47,41 @@ export default function HighlightsSection() {
 
   useEffect(() => {
     const video = videoRef.current;
+    if (!video) return;
 
-    if (video) {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.playsInline = true;
-      video.setAttribute("muted", "");
-      video.setAttribute("playsinline", "");
-      video.load();
+    // Respect reduced motion
+    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (prefersReduced) {
       video.pause();
-      video.currentTime = 0;
-
-      const delayedPlay = setTimeout(() => {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => {
-              console.log("✅ Autoplay en Safari funcionó.");
-            })
-            .catch((error) => {
-              console.warn("🚫 Safari bloqueó autoplay:", error);
-            });
-        }
-      }, 300);
-
-      const tryPlay = () => {
-        if (video.paused) {
-          video.play().catch(() => {});
-        }
-      };
-
-      window.addEventListener("click", tryPlay);
-      window.addEventListener("scroll", tryPlay);
-
-      return () => {
-        clearTimeout(delayedPlay);
-        window.removeEventListener("click", tryPlay);
-        window.removeEventListener("scroll", tryPlay);
-      };
+      return;
     }
+
+    // Ensure attributes for iOS/Safari
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+
+    // Observer to play/pause based on visibility
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    io.observe(video);
+
+    return () => {
+      io.disconnect();
+    };
   }, []);
 
   return (
@@ -94,33 +100,35 @@ export default function HighlightsSection() {
         className="relative bg-white py-28 px-4 sm:px-6 overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: false, amount: 0.1 }}
+        transition={{ duration: 0.55 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <SeoHighlightsSection />
 
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <video
-  ref={videoRef}
-  autoPlay
-  loop
-  playsInline
-  preload="auto"
-  disableRemotePlayback
-  aria-hidden="true"
-  poster=""
-  className="absolute inset-0 w-full h-full object-cover opacity-100"
-  id="bgVideo"
-  muted // ✅ Solo una vez
->
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            playsInline
+            preload="metadata"
+            disableRemotePlayback
+            aria-hidden="true"
+            poster="/img/highlights-bg.jpg"
+            className="absolute inset-0 w-full h-full object-cover opacity-100"
+            id="bgVideo"
+            muted
+          >
             <source src="/videos/highlights-bg.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent z-0 pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,.45),transparent_60%)] pointer-events-none z-0" />
+          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/55 to-transparent pointer-events-none z-0" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-0" />
         </div>
 
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <motion.h2
-            className="text-3xl sm:text-4xl font-bold tracking-tight text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.6)] mb-20"
+            className="text-4xl sm:text-5xl font-bold tracking-tight text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -128,23 +136,24 @@ export default function HighlightsSection() {
             {t.highlights.title}
           </motion.h2>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+          <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 gap-y-12">
+            <div className="pointer-events-none absolute inset-0 bg-black/10 md:bg-black/15 backdrop-blur-[1px] rounded-none z-0" />
             {Object.entries(t.highlights.items).map(([key, item], idx) => (
               <motion.div
                 key={key}
-                className="p-6 rounded-2xl bg-white/50 border border-white/30 shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 backdrop-blur-md"
+                className="p-6 md:p-6 lg:p-7 rounded-xl bg-white/65 border border-white/30 shadow-lg hover:shadow-xl hover:-translate-y-0.5 hover:ring-1 hover:ring-white/30 transition-transform duration-300 transform-gpu backdrop-blur-md z-10"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                transition={{ duration: 0.5, delay: idx * 0.07 }}
                 viewport={{ once: true }}
               >
                 <div className="mb-4 flex justify-center">
                   {iconMap[key as keyof typeof iconMap]}
                 </div>
-                <h3 className="text-base font-semibold text-gray-900 mb-2">
+                <h3 className="text-[15px] font-semibold tracking-tight text-gray-900 mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
+                <p className="text-[13px] leading-relaxed text-gray-700/95 max-w-[32ch] mx-auto">
                   {item.desc}
                 </p>
               </motion.div>

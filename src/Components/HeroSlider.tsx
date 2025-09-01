@@ -9,6 +9,7 @@ const slides = [
   {
     id: 1,
     image: "/img/hero-visual.jpg",
+    imageMobile: "/img/hero-visual-mobile.jpg",
     imageAlt: "Man working on web design project on laptop",
     claim: {
       es: "SEO · Impacto visual · Experiencia de usuario",
@@ -31,6 +32,7 @@ const slides = [
   {
     id: 2,
     image: "/img/software-slide.jpg",
+    imageMobile: "/img/software-slide-mobile.jpg",
     imageAlt: "Dashboard of a custom software with charts and code",
     claim: {
       es: "SaaS · Apps Web · Desarrollo a medida",
@@ -53,6 +55,7 @@ const slides = [
   {
     id: 3,
     image: "/img/branding-slide.jpg",
+    imageMobile: "/img/branding-slide-mobile.jpg",
     imageAlt: "Brand strategy and color palette design on tablet",
     claim: {
       es: "Identidad visual · Marca · Estrategia",
@@ -71,6 +74,29 @@ const slides = [
       en: "Boost my brand",
     },
     buttonLink: "mailto:r.opalo@icloud.com", // ✨ Cambio aquí
+  },
+  {
+    id: 4,
+    image: "/img/automations-slide.jpg",
+    imageMobile: "/img/automations-slide-mobile.jpg",
+    imageAlt: "Automation workflows dashboard",
+    claim: {
+      es: "Automatizaciones · MCP · n8n",
+      en: "Automations · MCP · n8n",
+    },
+    title: {
+      es: "Procesos que trabajan por vos.",
+      en: "Workflows that work for you.",
+    },
+    description: {
+      es: "Bots, integraciones y flujos que ahorran tiempo y escalan tu negocio.",
+      en: "Bots, integrations and flows that save time and scale your business.",
+    },
+    button: {
+      es: "Automatizar mi empresa",
+      en: "Automate my business",
+    },
+    buttonLink: "#contacto",
   },
 ];
 
@@ -173,14 +199,28 @@ export default function HeroSlider() {
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
-          <div className="absolute inset-y-0 right-0 w-1/2">
+          {/* Mobile background image (full-bleed) */}
+          <div className="absolute inset-0 md:hidden">
+            <img
+              src={slides[index].imageMobile}
+              alt={slides[index].imageAlt}
+              className="h-full w-full object-cover object-center"
+              draggable="false"
+            />
+            {/* Softer overlay for mobile to avoid harsh cuts and keep text legible */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent pointer-events-none" />
+          </div>
+
+          {/* Desktop image on the right half (unchanged) */}
+          <div className="absolute inset-y-0 right-0 w-1/2 hidden md:block">
             <img
               src={slides[index].image}
               alt={slides[index].imageAlt}
               className="h-full w-full object-cover object-center"
               draggable="false"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent pointer-events-none" />
+            <div className="absolute left-0 top-0 h-full w-24 sm:w-40 md:w-56 bg-gradient-to-r from-black to-transparent pointer-events-none" />
           </div>
         </motion.div>
       </AnimatePresence>
@@ -188,13 +228,13 @@ export default function HeroSlider() {
       {/* Contenido */}
       <div className="relative z-10 max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center px-4 sm:px-6 py-28 min-h-[600px]">
         <div className="min-h-[320px] flex flex-col justify-center">
-          <p className="text-xs uppercase tracking-widest text-primary mb-2">
+          <p className="text-xs uppercase tracking-widest text-primary mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] md:drop-shadow-none">
             {slides[index].claim[language]}
           </p>
-          <h1 className="text-3xl sm:text-5xl font-bold text-primary mb-6 leading-tight break-words max-w-[90vw] sm:max-w-full">
+          <h1 className="text-3xl sm:text-5xl font-bold text-primary mb-6 leading-tight break-words max-w-[90vw] sm:max-w-full drop-shadow-[0_3px_12px_rgba(0,0,0,0.85)] md:drop-shadow-none">
   {slides[index].title[language]}
 </h1>
-<p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed max-w-[90vw] sm:max-w-2xl">
+<p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed max-w-[90vw] sm:max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] md:drop-shadow-none">
   {slides[index].description[language]}
 </p>
           <div className="w-fit">

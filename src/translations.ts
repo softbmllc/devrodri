@@ -29,6 +29,8 @@ export type TranslationsStructure = {
       responsive: { icon: string; title: string; desc: string };
       results: { icon: string; title: string; desc: string };
       seo: { icon: string; title: string; desc: string };
+      automation: { icon: string; title: string; desc: string };
+      payments: { icon: string; title: string; desc: string };
     };
     seo: {
       title: string;
@@ -76,6 +78,11 @@ export type TranslationsStructure = {
       link: string;
     };
     federico: {
+      title: string;
+      desc: string;
+      link: string;
+    };
+    mutter: {
       title: string;
       desc: string;
       link: string;
@@ -215,6 +222,16 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
           title: "SEO integrado",
           desc: "Optimización técnica y estratégica para posicionar en Google.",
         },
+        automation: {
+          icon: "🤖",
+          title: "Automatizaciones",
+          desc: "Integraciones y flujos con n8n y MCP que ahorran tiempo y escalan tu negocio.",
+        },
+        payments: {
+          icon: "💳",
+          title: "Pagos online embebidos",
+          desc: "Checkout integrado con Stripe/PayPal/Mercado Pago, seguro y sin fricción.",
+        },
       },
       seo: {
         title: "¿Por qué elegirnos? | Rodrigo Opalo",
@@ -262,6 +279,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       federico: {
         title: "Federico Roma",
         desc: "Sitio web personal y profesional del campeón mundial de kickboxing y muay thai. Incluye biografía, cursos en video, fotos, y productos exclusivos.",
+        link: "Ver sitio web",
+      },
+      mutter: {
+        title: "Mutter Games",
+        desc: "E-commerce de videojuegos, consolas y accesorios. Catálogo dinámico, carrito y checkout con Mercado Pago, SEO y diseño responsive.",
         link: "Ver sitio web",
       },
       seo: {
@@ -446,6 +468,16 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
           title: "Built-in SEO",
           desc: "Technical and strategic optimization to rank on Google.",
         },
+        automation: {
+          icon: "🤖",
+          title: "Automations",
+          desc: "Integrations and workflows with n8n and MCP that save time and scale your business.",
+        },
+        payments: {
+          icon: "💳",
+          title: "Embedded payments",
+          desc: "Integrated checkout with Stripe/PayPal/Mercado Pago – secure and frictionless.",
+        },
       },
       seo: {
         title: "Why choose me as your web developer?",
@@ -494,6 +526,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       federico: {
         title: "Federico Roma",
         desc: "Personal and professional website for the Muay Thai and Kickboxing world champion. Includes biography, video courses, photos, and exclusive products.",
+        link: "View website",
+      },
+      mutter: {
+        title: "Mutter Games",
+        desc: "E-commerce for video games, consoles and accessories. Dynamic catalog, cart and checkout with Mercado Pago, SEO and responsive design.",
         link: "View website",
       },
       seo: {

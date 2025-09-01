@@ -1,9 +1,8 @@
 // src/App.tsx
 import { useLanguage } from "./LanguageContext";
-import translations from "./translations";
 import { HelmetProvider } from "react-helmet-async";
 import SeoHead from "./Components/SeoHead";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HeroSlider from "./Components/HeroSlider";
 import SobreMiSection from "./Components/SobreMiSection";
 import HighlightsSection from "./Components/HighlightsSection";
@@ -18,11 +17,54 @@ import TransitionServicesIntro from "./Components/TransitionServicesIntro";
 import "./index.css";
 import SeoFooterSection from "./Components/SeoFooterSection";
 import CTASection from "./Components/CTASection";
+import { Routes, Route, useLocation } from "react-router-dom";
+
+import PortfolioPage from "./pages/PortfolioPage";
+
+const HomePage = () => (
+  <>
+    {/* Hero Slider */}
+    <HeroSlider />
+    {/* Impact Section */}
+    <ImpactSection />
+    {/* SOBRE MÍ con curva incluida internamente */}
+    <SobreMiSection />
+    {/* Experience */}
+    <ExperienceSection />
+    {/* Highlights */}
+    <HighlightsSection />
+    {/* Intro antes del bloque de servicios */}
+    <TransitionServicesIntro />
+    {/* Portfolio */}
+    <PortfolioSection />
+    {/* Bridge blanco entre Portfolio y Contacto */}
+    <TransitionServicesIntro variant="afterPortfolio" />
+    {/* Contacto */}
+    <ContactSection />
+    {/* Preguntas Frecuentes */}
+    <FaqSection />
+    {/* CTASection */}
+    <CTASection />
+  </>
+);
+
+
+function ScrollToHash() {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0 });
+    }
+  }, [location.pathname, location.hash]);
+  return null;
+}
 
 function App() {
   const { language } = useLanguage();
-  const t = translations[language];
-  const [success, setSuccess] = useState(false);
 
   return (
     <HelmetProvider>
@@ -31,38 +73,12 @@ function App() {
 
         {/* ✅ Navbar */}
         <Navbar key={language} />
+        <ScrollToHash />
 
-        {/* Hero Slider */}
-        <HeroSlider />
-
-        {/* Impact Section */}
-        <ImpactSection />
-
-        {/* SOBRE MÍ con curva incluida internamente */}
-        <SobreMiSection />
-
-        {/* Experience */}
-        <ExperienceSection />
-
-        {/* 💬 Transición inspiradora antes del bloque de highlights */}
-        
-        {/* Highlights */}
-        <HighlightsSection />
-
-        {/* 💡 Intro antes del bloque de servicios */}
-        <TransitionServicesIntro />
-
-        {/* Portfolio */}
-        <PortfolioSection />
-
-        {/* Contacto */}
-        <ContactSection /> {/* ✅ Sigue acá, pero ya no tiene el id="contacto" */}
-
-        {/* Preguntas Frecuentes */}
-        <FaqSection />
-
-        {/* CTASection */}
-        <CTASection />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/portfolio" element={<PortfolioPage />} />
+        </Routes>
 
         {/* Footer SEO + visual */}
         <SeoFooterSection />

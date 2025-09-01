@@ -43,11 +43,25 @@ const seoData = [
       keywords: "branding, visual identity, brand design, strategy",
     },
   },
+  {
+    es: {
+      title: "Automatizaciones con IA, MCP y n8n | Rodrigo Opalo",
+      description: "Bots, integraciones y flujos automatizados que ahorran tiempo y escalan tu negocio.",
+      keywords: "automatizaciones, n8n, MCP, bots, integraciones, flujos",
+    },
+    en: {
+      title: "Automations with AI, MCP & n8n | Rodrigo Opalo",
+      description: "Bots, integrations and automated workflows that save time and scale your business.",
+      keywords: "automations, n8n, MCP, bots, integrations, workflows",
+    },
+  },
 ];
 
 export default function SeoHeroSlide({ index }: SlideSeoProps) {
   const { language } = useLanguage();
-  const seo = seoData[index][language];
+  const safeIndex = Math.min(index, seoData.length - 1);
+  const lang = (language === "en" ? "en" : "es") as "es" | "en";
+  const seo = seoData[safeIndex][lang];
 
   return (
     <Helmet>
