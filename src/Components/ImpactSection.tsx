@@ -1,5 +1,4 @@
 // src/Components/ImpactSection.tsx
-import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
 import { useEffect, useState } from "react";
@@ -18,14 +17,10 @@ export default function ImpactSection() {
   return (
     <>
       <SeoImpactSection />
-      <motion.section
+      <section
         key={key}
         id="impacto"
         className="bg-black text-white py-28 px-4 sm:px-6"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.55 }}
-        viewport={{ once: true, amount: 0.25 }}
       >
         <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-10 items-center">
           {/* Texto */}
@@ -82,7 +77,7 @@ export default function ImpactSection() {
             <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black/60 via-black/30 to-transparent pointer-events-none" />
           </div>
         </div>
-      </motion.section>
+      </section>
     </>
   );
 }

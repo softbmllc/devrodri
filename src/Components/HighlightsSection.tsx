@@ -1,5 +1,4 @@
 // src/Components/HighlightsSection.tsx
-import { motion } from "framer-motion";
 import { LuZap, LuSmartphone, LuTarget, LuRocket, LuWorkflow, LuCreditCard } from "react-icons/lu";
 import { ChevronDown } from "lucide-react";
 import { useLanguage } from "../LanguageContext";
@@ -95,13 +94,9 @@ export default function HighlightsSection() {
         </div>
       </section>
 
-      <motion.section
+      <section
         id="porqueelegirnos"
         className="relative bg-white py-28 px-4 sm:px-6 overflow-hidden"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.55 }}
-        viewport={{ once: true, amount: 0.2 }}
       >
         <SeoHighlightsSection />
 
@@ -127,25 +122,16 @@ export default function HighlightsSection() {
         </div>
 
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <motion.h2
-            className="text-4xl sm:text-5xl font-bold tracking-tight text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] mb-12 sm:mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] mb-12 sm:mb-16">
             {t.highlights.title}
-          </motion.h2>
+          </h2>
 
           <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 gap-y-12">
             <div className="pointer-events-none absolute inset-0 bg-black/10 md:bg-black/15 backdrop-blur-[1px] rounded-none z-0" />
-            {Object.entries(t.highlights.items).map(([key, item], idx) => (
-              <motion.div
+            {Object.entries(t.highlights.items).map(([key, item]) => (
+              <div
                 key={key}
                 className="p-6 md:p-6 lg:p-7 rounded-xl bg-white/65 border border-white/30 shadow-lg hover:shadow-xl hover:-translate-y-0.5 hover:ring-1 hover:ring-white/30 transition-transform duration-300 transform-gpu backdrop-blur-md z-10"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.07 }}
-                viewport={{ once: true }}
               >
                 <div className="mb-4 flex justify-center">
                   {iconMap[key as keyof typeof iconMap]}
@@ -156,11 +142,11 @@ export default function HighlightsSection() {
                 <p className="text-[13px] leading-relaxed text-gray-700/95 max-w-[32ch] mx-auto">
                   {item.desc}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
     </>
   );
 }

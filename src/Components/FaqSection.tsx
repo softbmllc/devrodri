@@ -1,7 +1,6 @@
 // src/Components/FaqSection.tsx
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
-import { motion } from "framer-motion";
 
 export default function FaqSection() {
   const { language } = useLanguage();
@@ -71,13 +70,9 @@ export default function FaqSection() {
   const faqs = [...baseFaqs, ...extraFaq];
 
   return (
-    <motion.section
+    <section
       id="faq"
       className="relative bg-black py-28 px-4 sm:px-6 overflow-hidden"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
     >
       {/* Imagen de fondo centrada y ampliada con degradado sutil */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -93,28 +88,21 @@ export default function FaqSection() {
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-black to-transparent z-10" />
 
       {/* Degradado inferior (imagen a negro) */}
-<div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black to-transparent z-10" />
 
       {/* Contenido principal */}
       <div className="relative z-20 max-w-4xl mx-auto">
-        <motion.h2
-  className="text-4xl sm:text-5xl font-bold text-center text-white mb-12 tracking-tight leading-tight drop-shadow-sm"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <h2
+          className="text-4xl sm:text-5xl font-bold text-center text-white mb-12 tracking-tight leading-tight drop-shadow-sm"
         >
           {t.faq.title}
-        </motion.h2>
+        </h2>
 
         <div className="space-y-8">
           {faqs.map((q: any, index: number) => (
-            <motion.div
+            <div
               key={index}
               className="bg-white p-6 sm:p-7 px-5 sm:px-6 rounded-2xl shadow-md border border-gray-100 cursor-default transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:shadow-lg hover:scale-[1.01]"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
             >
               <h3 className="font-semibold text-lg sm:text-xl text-primary mb-2">
                 {q.question}
@@ -122,7 +110,7 @@ export default function FaqSection() {
               <p className="text-neutral-800 text-base leading-relaxed">
                 {q.answer}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -134,6 +122,6 @@ export default function FaqSection() {
           <a href="mailto:r.opalo@icloud.com?subject=Consulta%20FAQ%20devrodri.com" className="text-primary hover:underline font-medium">Email</a>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

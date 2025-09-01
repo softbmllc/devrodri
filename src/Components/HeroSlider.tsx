@@ -231,10 +231,10 @@ export default function HeroSlider() {
           <p className="text-xs uppercase tracking-widest text-primary mb-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] md:drop-shadow-none">
             {slides[index].claim[language]}
           </p>
-          <h1 className="text-3xl sm:text-5xl font-bold text-primary mb-6 leading-tight break-words max-w-[90vw] sm:max-w-full drop-shadow-[0_3px_12px_rgba(0,0,0,0.85)] md:drop-shadow-none">
+          <h1 className="text-3xl sm:text-5xl font-bold text-primary mb-6 leading-tight break-words max-w-[90vw] sm:max-w-full drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] md:drop-shadow-none">
   {slides[index].title[language]}
 </h1>
-<p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed max-w-[90vw] sm:max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] md:drop-shadow-none">
+<p className="text-base sm:text-lg text-gray-300 mb-8 leading-relaxed max-w-[90vw] sm:max-w-2xl drop-shadow-[0_3px_14px_rgba(0,0,0,0.9)] md:drop-shadow-none">
   {slides[index].description[language]}
 </p>
           <div className="w-fit">

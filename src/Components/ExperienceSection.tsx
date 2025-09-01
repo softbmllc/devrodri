@@ -1,5 +1,4 @@
 // src/Components/ExperienceSection.tsx
-import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
 import { useEffect, useState } from "react";
@@ -16,15 +15,11 @@ export default function ExperienceSection() {
   }, [language]);
 
   return (
-    <motion.section
+    <section
       key={key}
       id="experiencia"
       data-section="experience"
       className="bg-black text-white py-28 px-4 sm:px-6"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.55 }}
-      viewport={{ once: true, amount: 0.25 }}
     >
       <SeoExperienceSection />
       <div className="max-w-6xl mx-auto grid md:grid-cols-12 items-center gap-12">
@@ -59,6 +54,6 @@ export default function ExperienceSection() {
           </p>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
