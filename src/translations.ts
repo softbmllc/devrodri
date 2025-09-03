@@ -87,6 +87,11 @@ export type TranslationsStructure = {
       desc: string;
       link: string;
     };
+    lem: {
+      title: string;
+      desc: string;
+      link: string;
+    };
     seo: {
       title: string;
       description: string;
@@ -284,6 +289,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       mutter: {
         title: "Mutter Games",
         desc: "E-commerce de videojuegos, consolas y accesorios. Catálogo dinámico, carrito y checkout con Mercado Pago, SEO y diseño responsive.",
+        link: "Ver sitio web",
+      },
+      lem: {
+        title: "LEM-BOX",
+        desc: "Logística en Miami y envíos internacionales (Uruguay + Argentina). Landing mobile-first multipaís con contacto integrado (Resend) y SEO optimizado.",
         link: "Ver sitio web",
       },
       seo: {
@@ -531,6 +541,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       mutter: {
         title: "Mutter Games",
         desc: "E-commerce for video games, consoles and accessories. Dynamic catalog, cart and checkout with Mercado Pago, SEO and responsive design.",
+        link: "View website",
+      },
+      lem: {
+        title: "LEM-BOX",
+        desc: "Logistics in Miami and international shipping (Uruguay + Argentina). Mobile-first multi-country landing with integrated contact (Resend) and optimized SEO.",
         link: "View website",
       },
       seo: {

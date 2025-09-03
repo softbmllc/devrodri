@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
 
-type ProjectKey = "mutter" | "federico" | "bionova" | "boating";
+type ProjectKey = "lem" | "mutter" | "federico" | "bionova" | "boating";
 type Project = { key: ProjectKey; href: string; cover: string };
 
 const projects: Project[] = [
+  { key: "lem",   href: "https://lem-box.com.uy",            cover: "/img/lem-box-cover.jpg" },
   { key: "mutter",   href: "https://www.muttergames.com",            cover: "/img/mutter-cover.jpg" },
   { key: "federico", href: "https://www.federicoroma.com",            cover: "/img/federico-cover.jpg" },
   { key: "bionova",  href: "https://www.getbionova.com",              cover: "/img/bionova-cover.jpg" },
@@ -16,6 +17,7 @@ const projects: Project[] = [
 
 type Category = "all" | "ecom" | "personal" | "services";
 const projectMeta: Record<ProjectKey, { category: Category; tags: string[]; tagsEn: string[] }> = {
+  lem:      { category: "services", tags: ["Logística", "Next.js"],         tagsEn: ["Logistics", "Next.js"] },
   mutter:   { category: "ecom",     tags: ["E‑commerce", "Mercado Pago"],            tagsEn: ["E‑commerce", "Mercado Pago"] },
   federico: { category: "personal", tags: ["Marca personal", "Cursos"],             tagsEn: ["Personal brand", "Courses"] },
   bionova:  { category: "ecom",     tags: ["E‑commerce", "Stripe/PayPal"],          tagsEn: ["E‑commerce", "Stripe/PayPal"] },
@@ -36,6 +38,49 @@ const caseDetails: Record<ProjectKey, {
   solutionEs: string[]; solutionEn: string[];
   resultsEs: string[]; resultsEn: string[];
 }> = {
+  lem: {
+    summaryEs: "Logística en Miami y envíos internacionales (Uruguay + Argentina). Landing mobile-first, multipaís y contacto con Resend.",
+    summaryEn: "Logistics in Miami and international shipping (Uruguay + Argentina). Mobile-first, multi-country landing with Resend contact.",
+    stack: [
+      "Frontend: Next.js 15 + TypeScript + Tailwind",
+      "Hosting: Vercel",
+      "Integraciones: WhatsApp · Instagram · Email (Resend)",
+      "Roadmap multipaís: lem-box.com (selector), lem-box.com.uy, lem-box.com.ar"
+    ],
+    integrations: ["Resend (email)", "WhatsApp", "Instagram"],
+    challengesEs: [
+      "Crear un sitio de logística con estética premium (Apple-like) en un rubro tradicional",
+      "Alinear branding digital con la operativa real de un warehouse en Miami",
+      "Optimizar tiempos de carga y experiencia mobile"
+    ],
+    challengesEn: [
+      "Build a premium (Apple-like) logistics site in a traditional industry",
+      "Align digital branding with the real Miami warehouse operations",
+      "Optimize load times and mobile UX"
+    ],
+    solutionEs: [
+      "Diseño consistente y minimalista con colores corporativos (#02120F y #EB6619)",
+      "Flujo de navegación claro: landing → contacto → WhatsApp/email",
+      "Implementación de arquitectura multipaís (selector + sitios locales)",
+      "SEO optimizado para Uruguay y Argentina"
+    ],
+    solutionEn: [
+      "Consistent, minimal design with brand colors (#02120F and #EB6619)",
+      "Clear navigation flow: landing → contact → WhatsApp/email",
+      "Multi-country architecture (selector + local sites)",
+      "SEO optimized for Uruguay and Argentina"
+    ],
+    resultsEs: [
+      "Primera versión productiva en Uruguay lista para producción",
+      "Roadmap claro para expansión regional",
+      "Sitio rápido, responsive y con identidad propia, diferenciado de la competencia"
+    ],
+    resultsEn: [
+      "First productive version for Uruguay, ready for production",
+      "Clear roadmap for regional expansion",
+      "Fast, responsive site with its own identity"
+    ],
+  },
   mutter: {
     summaryEs: "Tienda online con catálogo dinámico, carrito y checkout integrado con Mercado Pago, diseño responsive y SEO optimizado.",
     summaryEn: "Online store with dynamic catalog, cart and Mercado Pago checkout, responsive design and SEO‑optimized.",
@@ -199,6 +244,7 @@ export default function PortfolioPage() {
 
   const [filter, setFilter] = useState<Category>("all");
   const [expanded, setExpanded] = useState<Record<ProjectKey, boolean>>({
+    lem: false,
     mutter: false,
     federico: false,
     bionova: false,
@@ -210,6 +256,7 @@ export default function PortfolioPage() {
 
   // Helper tipado para evitar problemas con acceso dinámico
   const P: Record<ProjectKey, { title: string; desc: string; link: string }> = {
+    lem: t.portfolio.lem,
     mutter: t.portfolio.mutter,
     federico: t.portfolio.federico,
     bionova: t.portfolio.bionova,

@@ -52,6 +52,40 @@ export default function PortfolioSection() {
         </motion.h2>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Proyecto LEM-BOX */}
+          <motion.a
+            href="https://lem-box.com.uy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block bg-neutral shadow-md rounded-2xl overflow-hidden border border-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-transform"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -2 }}
+            whileFocus={{ y: -2 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <img
+              src="/img/lem-box-cover.jpg"
+              alt="LEM-BOX"
+              className="w-full h-56 object-cover rounded-t-2xl"
+              loading="lazy"
+              decoding="async"
+              sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+            />
+            <div className="p-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2 tracking-tight">
+                {t.portfolio.lem.title}
+              </h3>
+              <p className="text-sm text-gray-600 leading-5 line-clamp-4 min-h-[84px] mb-1">
+                {t.portfolio.lem.desc}
+              </p>
+              <span className="mt-3 inline-block text-primary font-medium group-hover:opacity-80">
+                {t.portfolio.lem.link}
+              </span>
+            </div>
+          </motion.a>
+
           {/* Proyecto Mutter Games */}
           <motion.a
             href="https://www.muttergames.com"
