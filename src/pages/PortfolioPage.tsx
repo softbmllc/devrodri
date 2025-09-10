@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 import translations from "../translations";
 
-type ProjectKey = "lem" | "mutter" | "federico" | "bionova" | "boating";
+type ProjectKey = "lem" | "esteban" | "mutter" | "federico" | "bionova" | "boating";
 type Project = { key: ProjectKey; href: string; cover: string };
 
 const projects: Project[] = [
+  { key: "esteban", href: "https://estebanfirpo.com", cover: "/img/esteban.jpg" },
   { key: "lem",   href: "https://lem-box.com.uy",            cover: "/img/lem-box-cover.jpg" },
   { key: "mutter",   href: "https://www.muttergames.com",            cover: "/img/mutter-cover.jpg" },
   { key: "federico", href: "https://www.federicoroma.com",            cover: "/img/federico-cover.jpg" },
@@ -18,6 +19,7 @@ const projects: Project[] = [
 type Category = "all" | "ecom" | "personal" | "services";
 const projectMeta: Record<ProjectKey, { category: Category; tags: string[]; tagsEn: string[] }> = {
   lem:      { category: "services", tags: ["Logística", "Next.js"],         tagsEn: ["Logistics", "Next.js"] },
+  esteban:  { category: "services", tags: ["Real Estate", "Next.js"],     tagsEn: ["Real Estate", "Next.js"] },
   mutter:   { category: "ecom",     tags: ["E‑commerce", "Mercado Pago"],            tagsEn: ["E‑commerce", "Mercado Pago"] },
   federico: { category: "personal", tags: ["Marca personal", "Cursos"],             tagsEn: ["Personal brand", "Courses"] },
   bionova:  { category: "ecom",     tags: ["E‑commerce", "Stripe/PayPal"],          tagsEn: ["E‑commerce", "Stripe/PayPal"] },
@@ -79,6 +81,53 @@ const caseDetails: Record<ProjectKey, {
       "First productive version for Uruguay, ready for production",
       "Clear roadmap for regional expansion",
       "Fast, responsive site with its own identity"
+    ],
+  },
+  esteban: {
+    summaryEs: "Sitio inmobiliario para preconstrucción en Miami. Incluye catálogo dinámico de proyectos, galerías, planos de pago, fichas multilenguaje (ES/EN), integración con WhatsApp y optimización SEO.",
+    summaryEn: "Real‑estate site for Miami preconstruction. Dynamic project catalog, galleries, payment plans, ES/EN pages, WhatsApp integration and SEO optimization.",
+    stack: [
+      "Frontend: Next.js (App Router) + TypeScript + Tailwind",
+      "Firebase: Hosting · Auth · Storage",
+      "Multilenguaje: next-intl"
+    ],
+    integrations: [
+      "Cloudinary/ImageKit (imágenes de proyectos)",
+      "Google Maps embebido",
+      "WhatsApp (botones de contacto)",
+      "Google Calendar (agendar reunión)"
+    ],
+    challengesEs: [
+      "Gestionar +40 proyectos con fichas independientes",
+      "Mantener diseño mobile-first, estética Apple-like y branding de Esteban",
+      "SEO específico por proyecto (og:image, meta, descripción)"
+    ],
+    challengesEn: [
+      "+40 independent project pages",
+      "Mobile-first design with Apple-like aesthetic and brand consistency",
+      "Per‑project SEO (og:image, meta, description)"
+    ],
+    solutionEs: [
+      "Estructura modular (.tsx por proyecto) con data centralizada",
+      "Bloques reutilizables (Highlights, Specs, PaymentPlan, FAQs, Ubicación)",
+      "Integración continua con Vercel para despliegues rápidos"
+    ],
+    solutionEn: [
+      "Modular structure (.tsx per project) with centralized data",
+      "Reusable blocks (Highlights, Specs, PaymentPlan, FAQs, Location)",
+      "Vercel integration for fast deployments"
+    ],
+    resultsEs: [
+      "Web veloz y optimizada (First Load < 2.5s)",
+      "Posicionamiento con metatags custom por proyecto",
+      "Catálogo escalable para sumar nuevos desarrollos",
+      "Herramienta comercial activa para captar inversores"
+    ],
+    resultsEn: [
+      "Fast, optimized site (First Load < 2.5s)",
+      "Per‑project custom metatags for SEO",
+      "Scalable catalog for new developments",
+      "Active sales tool to capture investors"
     ],
   },
   mutter: {
@@ -245,6 +294,7 @@ export default function PortfolioPage() {
   const [filter, setFilter] = useState<Category>("all");
   const [expanded, setExpanded] = useState<Record<ProjectKey, boolean>>({
     lem: false,
+    esteban: false,
     mutter: false,
     federico: false,
     bionova: false,
@@ -257,6 +307,7 @@ export default function PortfolioPage() {
   // Helper tipado para evitar problemas con acceso dinámico
   const P: Record<ProjectKey, { title: string; desc: string; link: string }> = {
     lem: t.portfolio.lem,
+    esteban: t.portfolio.esteban,
     mutter: t.portfolio.mutter,
     federico: t.portfolio.federico,
     bionova: t.portfolio.bionova,

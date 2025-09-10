@@ -92,6 +92,11 @@ export type TranslationsStructure = {
       desc: string;
       link: string;
     };
+    esteban: {
+      title: string;
+      desc: string;
+      link: string;
+    };
     seo: {
       title: string;
       description: string;
@@ -294,6 +299,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       lem: {
         title: "LEM-BOX",
         desc: "Logística en Miami y envíos internacionales (Uruguay + Argentina). Landing mobile-first multipaís con contacto integrado (Resend) y SEO optimizado.",
+        link: "Ver sitio web",
+      },
+      esteban: {
+        title: "Esteban Firpo · Miami Real Estate",
+        desc: "Sitio inmobiliario de preconstrucción en Miami. Catálogo de proyectos, galerías, planes de pago y fichas ES/EN con integración a WhatsApp y SEO optimizado.",
         link: "Ver sitio web",
       },
       seo: {
@@ -546,6 +556,11 @@ const translations: Record<LanguageKeys, TranslationsStructure> = {
       lem: {
         title: "LEM-BOX",
         desc: "Logistics in Miami and international shipping (Uruguay + Argentina). Mobile-first multi-country landing with integrated contact (Resend) and optimized SEO.",
+        link: "View website",
+      },
+      esteban: {
+        title: "Esteban Firpo · Miami Real Estate",
+        desc: "Miami preconstruction real‑estate site. Project catalog, galleries, payment plans and ES/EN pages with WhatsApp integration and optimized SEO.",
         link: "View website",
       },
       seo: {
