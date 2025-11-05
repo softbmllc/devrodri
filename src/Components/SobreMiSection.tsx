@@ -37,12 +37,31 @@ export default function SobreMiSection() {
           {t.about.title}
         </motion.h2>
         <p className="text-gray-700 md:text-gray-600 text-base md:text-lg leading-relaxed md:leading-[1.8] max-w-[60ch] mx-auto mb-6">
-          {t.about.description}
+          {language === "es"
+            ? (
+                <>
+                  Integrador de tecnología con mentalidad de producto
+                  <br />
+                  Full‑Stack (IBM) · React (Meta) · IA aplicada
+                </>
+              )
+            : (
+                <>
+                  Technology integrator with a product mindset
+                  <br />
+                  Full‑Stack (IBM) · React (Meta) · Applied AI
+                </>
+              )}
+        </p>
+        <p className="text-gray-700 md:text-gray-600 text-base md:text-lg leading-relaxed md:leading-[1.8] max-w-[60ch] mx-auto mb-6">
+          {language === "es"
+            ? "Somos un equipo liderado por Rodrigo Opalo. Diseñamos y desarrollamos productos digitales modernos, rápidos y orientados al negocio. Construimos sitios, apps y sistemas a medida combinando diseño, experiencia de usuario y tecnología."
+            : "We are a team led by Rodrigo Opalo. We design and develop modern, fast, business-oriented digital products. We build custom websites, apps, and systems combining design, user experience, and technology."}
         </p>
         <p className="text-gray-700 md:text-gray-600 text-base md:text-lg leading-relaxed max-w-[60ch] mx-auto mb-6">
           {language === "es"
-            ? "También implementamos automatizaciones para empresas con n8n y MCP — integrando CRMs, pagos, webhooks y dashboards para ahorrar tiempo y escalar procesos."
-            : "We also build business automations with n8n and MCP—integrating CRMs, payments, webhooks and dashboards to save time and scale operations."}
+            ? "También integramos automatizaciones y asistentes con n8n y MCP: CRMs, pagos, webhooks y dashboards; además de APIs como OpenAI y Stripe para escalar procesos y reducir costos operativos."
+            : "We also integrate automations and assistants with n8n and MCP: CRMs, payments, webhooks, and dashboards; plus APIs like OpenAI and Stripe to scale processes and reduce operational costs."}
         </p>
         <div className="flex items-center justify-center gap-4 mt-2 md:mt-3">
           <a
@@ -62,11 +81,54 @@ export default function SobreMiSection() {
             {language === "es" ? "Hablemos" : "Let’s talk"}
           </a>
         </div>
-        <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-gray-500/90">
-          <li>{language === "es" ? "Stack: Next.js · React · Firebase" : "Stack: Next.js · React · Firebase"}</li>
-          <li>{language === "es" ? "Pagos online embebidos" : "Embedded online payments"}</li>
-          <li>{language === "es" ? "Automatizaciones con n8n y MCP" : "Automations with n8n & MCP"}</li>
+        <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-500/90 text-center">
+          <li>{language === "es" ? "Stack: Next.js · React · Node.js · Python · Firebase · Docker · CI/CD · Stripe · OpenAI API · Automatizaciones con n8n y MCP" : "Stack: Next.js · React · Node.js · Python · Firebase · Docker · CI/CD · Stripe · OpenAI API · Automations with n8n & MCP"}</li>
         </ul>
+        {/* Certifications */}
+        <div className="mt-4 flex flex-col items-center gap-1">
+          <a
+            href="https://coursera.org/verify/professional-cert/K86YRE6ARP76"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg ring-1 ring-gray-300 px-3 py-1.5 hover:bg-gray-100 text-sm text-gray-700"
+            aria-label={language === "es" ? "Verificar certificado IBM Full Stack Software Developer en Coursera" : "Verify IBM Full Stack Software Developer certificate on Coursera"}
+          >
+            <span className="font-medium">IBM Full Stack Software Developer</span>
+            <span className="hidden sm:inline text-gray-500"></span>
+            <span className="text-primary underline">{language === "es" ? "Verificar" : "Verify"}</span>
+          </a>
+          <a
+            href="https://www.credly.com/badges/26e359b2-526b-4f12-85b4-34a51759be15"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg ring-1 ring-gray-300 px-3 py-1.5 hover:bg-gray-100 text-sm text-gray-700"
+            aria-label={language === "es" ? "Verificar badge IBM Full Stack Software Developer Professional Certificate en Credly" : "Verify IBM Full Stack Software Developer Professional Certificate badge on Credly"}
+          >
+            <span className="font-medium">IBM Full Stack Software Developer Badge</span>
+            <span className="text-primary underline">{language === "es" ? "Verificar" : "Verify"}</span>
+          </a>
+          <p className="text-xs text-gray-500 text-center">
+            {language === "es"
+              ? "Certificación profesional dictada por IBM Skills Network · Acreditada en Credly"
+              : "Professional certification issued by IBM Skills Network · Verified on Credly"}
+          </p>
+          <a
+            href="https://coursera.org/verify/specialization/MITZ2I8D39XP"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg ring-1 ring-gray-300 px-3 py-1.5 hover:bg-gray-100 text-sm text-gray-700"
+            aria-label={language === "es" ? "Verificar certificado Meta React en Coursera" : "Verify Meta React certificate on Coursera"}
+          >
+            <span className="font-medium">Meta React</span>
+            <span className="hidden sm:inline text-gray-500"></span>
+            <span className="text-primary underline">{language === "es" ? "Verificar" : "Verify"}</span>
+          </a>
+          <p className="text-xs text-gray-500 text-center">
+            {language === "es"
+              ? "Cursos: React Basics y Advanced React · Dictado por Meta Staff"
+              : "Courses: React Basics and Advanced React · Taught by Meta Staff"}
+          </p>
+        </div>
       </div>
 
       {/* Curva inferior tipo Apple */}
