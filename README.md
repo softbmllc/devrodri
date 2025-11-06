@@ -19,13 +19,6 @@ This is a personal microsite to present my services as a freelance web designer 
 - **react-helmet-async** for SEO
 - **Custom i18n (translations.ts + context)**
 
-## 📸 Highlighted Project
-
-### Boating Adventures Miami
-A responsive site for a boat rental business in Miami. Features 3 languages, SEO, social links, WhatsApp integration, and dynamic sections for each boat service.
-
-🔗 [Visit website](https://boatingadventuresmiami.com)
-
 ## 🤝 Contact
 
 - Instagram: [@rodrigo.opalo](https://www.instagram.com/rodrigo.opalo)
