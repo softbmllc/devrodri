@@ -36,19 +36,19 @@ export default function SobreMiSection() {
         >
           {t.about.title}
         </motion.h2>
-        <p className="text-gray-700 md:text-gray-600 text-base md:text-lg leading-relaxed md:leading-[1.8] max-w-[60ch] mx-auto mb-6">
+        <p className="text-gray-700 md:text-gray-600 text-base md:text-lg leading-[1.7] md:leading-[1.75] max-w-[60ch] mx-auto mb-6">
           {language === "es"
             ? (
                 <>
                   Integrador de tecnología con mentalidad de producto
-                  <br />
+                  <br className="hidden sm:block" />
                   Full‑Stack (IBM) · React (Meta) · IA aplicada
                 </>
               )
             : (
                 <>
                   Technology integrator with a product mindset
-                  <br />
+                  <br className="hidden sm:block" />
                   Full‑Stack (IBM) · React (Meta) · Applied AI
                 </>
               )}
@@ -81,32 +81,37 @@ export default function SobreMiSection() {
             {language === "es" ? "Hablemos" : "Let’s talk"}
           </a>
         </div>
-        <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-gray-500/90 text-center">
+        <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[12.5px] tracking-wide text-gray-500/90 uppercase text-center">
           <li>{language === "es" ? "Stack: Next.js · React · Node.js · Python · Firebase · Docker · CI/CD · Stripe · OpenAI API · Automatizaciones con n8n y MCP" : "Stack: Next.js · React · Node.js · Python · Firebase · Docker · CI/CD · Stripe · OpenAI API · Automations with n8n & MCP"}</li>
         </ul>
         {/* Certifications */}
         <div className="mt-4 flex flex-col items-center gap-1">
           <a
-            href="https://coursera.org/verify/professional-cert/K86YRE6ARP76"
+            href="https://www.credly.com/badges/26e359b2-526b-4f12-85b4-34a51759be15/linked_in_profile"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg ring-1 ring-gray-300 px-3 py-1.5 hover:bg-gray-100 text-sm text-gray-700"
-            aria-label={language === "es" ? "Verificar certificado IBM Full Stack Software Developer en Coursera" : "Verify IBM Full Stack Software Developer certificate on Coursera"}
+            aria-label={language === "es" ? "Verificar certificado IBM Full Stack en Credly" : "Verify IBM Full Stack certificate on Credly"}
           >
-            <span className="font-medium">IBM Full Stack Software Developer</span>
-            <span className="hidden sm:inline text-gray-500"></span>
+            <span className="font-medium">IBM Full Stack Software Developer Professional Certificate (V5)</span>
             <span className="text-primary underline">{language === "es" ? "Verificar" : "Verify"}</span>
           </a>
           <a
-            href="https://www.credly.com/badges/26e359b2-526b-4f12-85b4-34a51759be15"
+            href="/img/certs/ibm-fullstack.png"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg ring-1 ring-gray-300 px-3 py-1.5 hover:bg-gray-100 text-sm text-gray-700"
-            aria-label={language === "es" ? "Verificar badge IBM Full Stack Software Developer Professional Certificate en Credly" : "Verify IBM Full Stack Software Developer Professional Certificate badge on Credly"}
+            className="mt-1 inline-flex items-center justify-center"
+            aria-label={language === "es" ? "Ampliar certificado IBM (imagen)" : "Open IBM certificate image"}
           >
-            <span className="font-medium">IBM Full Stack Software Developer Badge</span>
-            <span className="text-primary underline">{language === "es" ? "Verificar" : "Verify"}</span>
+            <img
+              src="/img/certs/ibm-fullstack.png"
+              alt="IBM Full Stack Certificate"
+              className="h-16 w-auto rounded ring-1 ring-gray-300 hover:ring-gray-400 shadow-sm hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
+          <p className="text-[11px] text-gray-400 mt-1">{language === "es" ? "Vista previa" : "Preview"}</p>
           <p className="text-xs text-gray-500 text-center">
             {language === "es"
               ? "Certificación profesional dictada por IBM Skills Network · Acreditada en Credly"
