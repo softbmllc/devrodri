@@ -16,8 +16,9 @@ export default function Footer() {
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
     >
-      <div className="max-w-6xl mx-auto text-center text-[11px] text-gray-600 flex items-center justify-center gap-2 flex-wrap sm:gap-3">
-        <p className="font-medium leading-none flex items-center gap-4 whitespace-nowrap">
+      <div className="max-w-6xl mx-auto text-center text-[11px] text-gray-600 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-3">
+        {/* Icons row */}
+        <div className="flex items-center justify-center gap-4">
           <a
             href="https://github.com/softbmllc"
             target="_blank"
@@ -58,8 +59,10 @@ export default function Footer() {
           >
             <FaWhatsapp />
           </a>
-          <span className="text-gray-400">•</span>
-          <span>© {new Date().getFullYear()} Rodrigo Opalo. Made with code by Rodrigo Opalo.</span>
+        </div>
+        {/* Copyright row */}
+        <p className="leading-none text-center px-4">
+          © {new Date().getFullYear()} Rodrigo Opalo. Made with code by Rodrigo Opalo.
         </p>
       </div>
     </motion.footer>

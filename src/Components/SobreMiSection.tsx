@@ -117,22 +117,7 @@ export default function SobreMiSection() {
               ? "Certificación profesional dictada por IBM Skills Network · Acreditada en Credly"
               : "Professional certification issued by IBM Skills Network · Verified on Credly"}
           </p>
-          <a
-            href="https://coursera.org/verify/specialization/MITZ2I8D39XP"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg ring-1 ring-gray-300 px-3 py-1.5 hover:bg-gray-100 text-sm text-gray-700"
-            aria-label={language === "es" ? "Verificar certificado Meta React en Coursera" : "Verify Meta React certificate on Coursera"}
-          >
-            <span className="font-medium">Meta React</span>
-            <span className="hidden sm:inline text-gray-500"></span>
-            <span className="text-primary underline">{language === "es" ? "Verificar" : "Verify"}</span>
-          </a>
-          <p className="text-xs text-gray-500 text-center">
-            {language === "es"
-              ? "Cursos: React Basics y Advanced React · Dictado por Meta Staff"
-              : "Courses: React Basics and Advanced React · Taught by Meta Staff"}
-          </p>
+          
         </div>
       </div>
 
