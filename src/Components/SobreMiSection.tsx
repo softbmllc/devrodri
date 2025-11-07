@@ -41,14 +41,14 @@ export default function SobreMiSection() {
             ? (
                 <>
                   Integrador de tecnología con mentalidad de producto
-                  <br className="hidden sm:block" />
+                  <br />
                   Full‑Stack (IBM) · React (Meta) · IA aplicada
                 </>
               )
             : (
                 <>
                   Technology integrator with a product mindset
-                  <br className="hidden sm:block" />
+                  <br />
                   Full‑Stack (IBM) · React (Meta) · Applied AI
                 </>
               )}
