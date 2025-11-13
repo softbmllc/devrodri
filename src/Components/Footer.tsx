@@ -20,7 +20,7 @@ export default function Footer() {
         {/* Icons row */}
         <div className="flex items-center justify-center gap-4">
           <a
-            href="https://github.com/softbmllc"
+            href="https://github.com/devrodri-com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
